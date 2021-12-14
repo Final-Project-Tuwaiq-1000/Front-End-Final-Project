@@ -1,0 +1,37 @@
+.logInPage{
+    margin-top: 5rem;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    align-items: center;
+    background-color: rgba(var(--b3f,250,250,250),1);
+    height: 46rem;
+    
+}
+
+.form{
+    text-align: center;
+    background-color: rgba(75, 72, 72, 0.356);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    border: 2px solid rgba(255,255,255,0.1);
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1rem;
+    width: 40rem;
+    margin: 1rem;
+    border-radius: 5rem;
+}
+
+.mar{
+    margin: 2rem;
+    width: 20rem;
+    height: 2rem;
+}
+
+.btn{
+    background-color: #55555531;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.4rem;
+    border-radius: 1rem;
+}

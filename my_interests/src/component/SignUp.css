@@ -1,0 +1,13 @@
+.textArea{
+    width: 20rem;
+    height: 5rem;
+}
+
+::placeholder{
+    color: red;
+}
+
+.errMsg{
+    color: red;
+    margin: 1rem;
+}

@@ -1,0 +1,28 @@
+.navbar{
+    width: 100%;
+    background-color: w;
+    position: fixed;
+    top: 0;
+    background-color: rgba(var(--d87,255,255,255),1);
+    border-bottom: 1px solid rgba(var(--b6a,219,219,219),1);
+    border-bottom-style:solid ;
+    border-bottom-color:black ;
+    width: 100%;
+    z-index: 3;
+    height: 4rem;
+}
+
+.navbar .nav, .navbar .nav > li {
+    display:inline-block;
+    margin: 1rem;
+   }
+  
+   .navbar-inner {
+    /* margin: 1rem; */
+    text-align:center;
+  }
+
+  .textDesign{
+      text-decoration: none;
+      color: black;
+  }
