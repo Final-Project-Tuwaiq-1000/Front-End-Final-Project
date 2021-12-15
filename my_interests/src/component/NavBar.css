@@ -26,3 +26,8 @@
       text-decoration: none;
       color: black;
   }
+
+  .imgNav{
+      align-self: center;
+      width: 1.5rem;
+  }

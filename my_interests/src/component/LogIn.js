@@ -8,6 +8,7 @@ import "./LogIn.css"
 function LogIn(){
     const [email , setEmail] = useState()
     const [password, setPassword] = useState()
+    const [errMsg,setErrMsg] = useState()
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -24,7 +25,7 @@ function LogIn(){
             dispatch(logIn(response.data))
             navigate("/")
         })
-        .catch(err=>{console.log(err.response.data);})
+        .catch(err=>{setErrMsg(err.response.data)})
     }
 
     return(
@@ -34,6 +35,7 @@ function LogIn(){
                 <h3>Log In</h3>
                 <div>Email:</div> <input type="email" className="mar" onChange={(e)=>{setEmail(e.target.value)}}/>
                 <div>Password:</div> <input type="password" className="mar" onChange={(e)=>{setPassword(e.target.value)}}/>  
+                <div className="errMsg">{errMsg}</div>
                 <input type="button" value={"Log In"} className="mar btn" onClick={getInfo}/>  
             </div>
         </div>

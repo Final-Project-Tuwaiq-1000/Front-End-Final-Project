@@ -1,5 +1,5 @@
 const inistialState ={
-    userLogged:[],
+    userLogged:{},
     isLogged:false
 }
 
@@ -7,12 +7,12 @@ const UserReducer = (state = inistialState,{type, payload})=>{
     switch (type){
         case "LOG_IN":
             return{
-                userLogged:[payload],
+                userLogged:payload,
                 isLogged:true
             }
         case "LOG_OUT":
             return{
-                userLogged:[],
+                userLogged:{},
                 isLogged:false
             }
         default:
