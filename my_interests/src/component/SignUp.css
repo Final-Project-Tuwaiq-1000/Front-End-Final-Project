@@ -1,13 +1,15 @@
 .textArea{
+    margin: 2rem;
     width: 20rem;
     height: 5rem;
+    border-radius: .3rem ;
     font-family: 'Times New Roman', Times, serif;
 }
 
-::placeholder{
+/* ::placeholder{
     font-family: 'Times New Roman', Times, serif;
     color: red;
-}
+} */
 
 .errMsg{
     font-family: 'Times New Roman', Times, serif;
@@ -15,7 +17,7 @@
     margin: 1rem;
 }
 
-.form > ::placeholder{
+/* .form-group > ::placeholder{
     font-family: 'Times New Roman', Times, serif;
     color: red;
-}
+} */

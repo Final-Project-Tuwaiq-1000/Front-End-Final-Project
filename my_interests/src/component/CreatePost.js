@@ -42,13 +42,27 @@ function CreatePost(){
     return(
         <>
             <div className="logInPage">
-                <div className="form">
-                    <h3>Create Post</h3>
-                    <div>Caption:</div> <textarea className="textArea fontType" placeholder={requiredField} onChange={(e)=>setCaption(e.target.value)}/>
-                    <div>Image</div> <input type="text" className="mar"placeholder={requiredField} onChange={(e)=>setImg(e.target.value)}/>  
-                    <div className="errMsg"></div>
-                    <input type="button" value={"Create"} className="mar btn" onClick={Create}/>  
+            <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <form method="POST" id="signup-form" class="signup-form">
+                        <h2 class="form-title">Create Post</h2>
+                        <div class="form-group">
+                            <textarea class="form-input" placeholder="Caption" onChange={e=>setCaption(e.target.value)}/>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-input" placeholder="Image" onChange={e=>setImg(e.target.value)}/>
+                        </div>
+                        <div class="form-group">
+                            <input type="button" class="form-submit" value="Create" onClick={Create}/>
+                        </div>
+                        <div class="form-group">
+                        </div>
+                    </form>
                 </div>
+            </div>
+        </section>
+
             </div>
         </>
     )

@@ -1,9 +1,9 @@
 .mainPage{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    background-color: rgba(var(--b3f,250,250,250),1);
     text-align: center;
     font-family: 'Times New Roman', Times, serif;
+    margin: 0rem;
   }
 
 .midGrid{
@@ -47,4 +47,9 @@
 .caption{
     text-align: left;
     margin: 1rem;
+    font-size: large;
+}
+
+.userName2{
+    font-weight:600;
 }

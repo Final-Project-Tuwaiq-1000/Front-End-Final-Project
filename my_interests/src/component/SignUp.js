@@ -38,6 +38,7 @@ function SignUp(){
                 document.getElementById("pass").value = ""
                 document.getElementById("cpass").value = ""
             }
+
             else{
             
                 axios.post("http://localhost:8080/user",userInfo)
@@ -54,17 +55,38 @@ function SignUp(){
         <>
         <div className="logInPage">
             <div className="form">
-                <h3>Sign Up</h3>
-                <div className="errMsg">{errMsg}</div>
-                <div>User Name:</div> <input type="text" className="mar" placeholder={requiredField} onChange={(e)=>{setUserName(e.target.value)}}/>
-                <div>Email:</div> <input type="email" className="mar" placeholder={requiredField} onChange={(e)=>{setEmail(e.target.value)}}/>
-                <div>Password:</div> <input type="password" placeholder={checkPass|| requiredField} id="pass" className="mar" onChange={(e)=>{setPassword(e.target.value)}}/>
-                <div>Confirm Password:</div> <input type="password"  placeholder={checkPass||requiredField}  id="cpass" className="mar" onChange={(e)=>{setConfirmPassword(e.target.value)}}/>
-                <div>Tell Us More About Your Self: </div>
-                <textarea className="textArea" onChange={(e)=>{setMoreInfo(e.target.value)}}/>
-                <br/>
-                <input type="button" value={"Sign Up"} className="mar btn" onClick={getInfo}/> 
-                 
+                <section class="signup">
+                    <div class="container">
+                        <div class="signup-content">
+                            <form method="POST" id="signup-form" class="signup-form">
+                                <h2 class="form-title">Sign UP</h2>
+                                <div class="form-group">
+                                    <input type="email" class="form-input" placeholder={requiredField.length>1? requiredField:"Email"} onChange={e=>setEmail(e.target.value.trim())}/>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-input" name="name" id="name" placeholder={requiredField.length>1? requiredField:"User Name" } onChange={e=>setUserName(e.target.value.trim())}/>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-input" placeholder={requiredField.length>1? requiredField:"Password"} onChange={e=>setPassword(e.target.value.trim())}/>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-input" placeholder={requiredField.length>1? requiredField:"Confirm Password"} onChange={e=>setConfirmPassword(e.target.value.trim())}/>
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-input" placeholder={requiredField.length>1? requiredField:"Tell Us More About Your Self"} onChange={e=>setMoreInfo(e.target.value.trim())}/>
+                                </div>
+                                <div class="form-group">
+                                    <input type="button"  class="form-submit" value="Sign up" onClick={getInfo}/>
+                                </div>
+                                <div class="form-group">
+                                    <div className="form-title">
+                                        {errMsg}
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </section> 
             </div>
         </div>
         </>

@@ -30,13 +30,33 @@ function LogIn(){
 
     return(
         <>
-        <div className="logInPage">
-            <div className="form">
-                <h3>Log In</h3>
-                <div>Email:</div> <input type="email" className="mar" onChange={(e)=>{setEmail(e.target.value)}}/>
-                <div>Password:</div> <input type="password" className="mar" onChange={(e)=>{setPassword(e.target.value)}}/>  
-                <div className="errMsg">{errMsg}</div>
-                <input type="button" value={"Log In"} className="mar btn" onClick={getInfo}/>  
+        <div className="backGround">
+            <div className="logInPage">
+            <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <form method="POST" id="signup-form" class="signup-form">
+                        <h2 class="form-title">Log In</h2>
+                        <div class="form-group">
+                            <input type="email" class="form-input" name="name" id="name" placeholder="Email" onChange={e=>setEmail(e.target.value)}/>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-input" name="password" id="password" placeholder="Password" onChange={e=>setPassword(e.target.value)}/>
+                            <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="button" class="form-submit" value="Log In" onClick={getInfo}/>
+                        </div>
+                        <div class="form-group">
+                            <div className="centerErr">
+                                {errMsg}
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
             </div>
         </div>
         </>

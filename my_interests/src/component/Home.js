@@ -29,8 +29,8 @@ function Home(){
                                 </div>
                                 <Link to={`/${e.user.id}`} className="userName">{e.user.userName}</Link>
                             </div>
-                            <input type="image" src={e.image} className="imgWidth"/>
-                            <div className="caption"><Link to={`/${e.user.id}`} className="userName">{e.user.userName}</Link> {e.caption}</div>
+                            <Link to={`/Post/${e.id}`}><input type="image" src={e.image} className="imgWidth"/></Link>
+                            <div className="caption"><Link to={`/${e.user.id}`} className="userName2">{e.user.userName}</Link> {e.caption}</div>
                         </div>
                         </>
                     )

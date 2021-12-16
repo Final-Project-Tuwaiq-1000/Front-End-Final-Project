@@ -37,7 +37,7 @@ function Profile(){
                             userInfo.posts.map(e=>{
                                 return(
                                 <div>
-                                    <Link to={`/post/${e.id}`}><input type="image" className="imgSize" src={e.image}/></Link>
+                                    <Link to={`/Post/${e.id}`}><input type="image" className="imgSize" src={e.image}/></Link>
                                 </div>
                                 )
                             })}
