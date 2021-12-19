@@ -1,0 +1,55 @@
+.mainPage{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0rem;
+  }
+
+.midGrid{
+    margin-top: 7rem;
+    width: 50rem;
+}
+
+.imgWidth{
+    width: 100%;
+}
+
+.postHead{
+    display: grid;
+    grid-template-columns: 5rem 1fr 1fr;
+    align-items: center;
+}
+
+.postDiv{
+    margin: 1rem;
+    background-color: white;
+    border-style:ridge;
+}
+
+.personalImg{
+    width: 3rem;
+    margin: 0.5rem;
+}
+
+.userName{
+    text-align: left;
+    font-family: 'Times New Roman', Times, serif;
+    text-decoration: none;
+    color: black;
+    font-weight:600;
+}
+
+.divWidth{
+    width: 1rem;
+}
+
+.caption{
+    text-align: left;
+    margin: 1rem;
+    font-size: large;
+}
+
+.userName2{
+    font-weight:600;
+}
