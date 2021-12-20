@@ -21,11 +21,14 @@ function SignUp(){
     const navigate = useNavigate()
      
     const userInfo ={
-        "userName":userName,
-        "email":email,
-        "password":password,
-        "moreInfo":moreInfo,
-        "personalImg":"https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
+        "user":{
+            "userName":userName,
+            "email":email,
+            "password":password,
+            "moreInfo":moreInfo,
+            "personalImg":"https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
+        },
+        "role_id":1
     }
 
     const getInfo = ()=>{
@@ -43,9 +46,7 @@ function SignUp(){
             
                 axios.post("http://localhost:8080/user",userInfo)
                 .then(response=>{
-                    console.log(response);
-                    dispatch(logIn(response.data))
-                    navigate("/")
+                    navigate("/LogIN")
                 })
                 .catch(err=>{setErrMsg(err.response.data)})
         }

@@ -11,7 +11,8 @@ function CreatePost(){
     const [requiredField, setRequiredField] = useState()
     const state = useSelector((state)=>{
         return {
-            userInfo: state.UserReducer
+            userInfo: state.UserReducer,
+            token: state.UserReducer.token
         }
     })
 
@@ -30,8 +31,11 @@ function CreatePost(){
             setRequiredField("This Field is Requierd")
         }
         else{
+            const config = {
+                headers:{Authorization: `Bearer ${state.token}`}
+            }
             axios
-            .post("http://localhost:8080/post",data)
+            .post("http://localhost:8080/post",data,config)
             .then(response=>{navigate("/")})
             .catch(err=>{console.log(err.response.data)})
         }
