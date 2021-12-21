@@ -65,7 +65,7 @@ function UpdatePost(){
                     <form method="POST" id="signup-form" class="signup-form">
                         <h2 class="form-title">Update Post</h2>
                         <div class="form-group">
-                            <textarea class="form-input" placeholder="Caption" defaultValue={post ===undefined?"": post.caption} onChange={e=>setCaption(e.target.value)}/>
+                            <textarea class="form-input textArea" placeholder="Caption" defaultValue={post ===undefined?"": post.caption} onChange={e=>setCaption(e.target.value)}/>
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-input" placeholder="Image" defaultValue={post ===undefined?"":post.image} onChange={e=>setImg(e.target.value)}/>

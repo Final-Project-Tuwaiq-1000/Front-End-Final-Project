@@ -63,3 +63,7 @@
     width: 18rem;
 }
 
+.update{
+    justify-self:end;
+    align-items: center;
+}

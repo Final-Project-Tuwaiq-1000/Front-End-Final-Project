@@ -101,8 +101,25 @@ function Post(){
                                             </Link>
                                              
                                             <div>
-                                                {e.comment}'    
+                                                {e.comment}
                                             </div>
+                                           {(state.userInfo.userLogged.id==e.user.id) && <input type="image" src="https://image.flaticon.com/icons/png/512/401/401036.png" className="deleteIcon" onClick={()=>{
+                                                 const config = {
+                                                    headers:{Authorization: `Bearer ${state.token}`}
+                                                }
+                                                
+                                                axios
+                                                .delete(`http://localhost:8080/comment/${e.id}`,config)
+                                                .then(response=>{
+                                                    console.log("Deleted");
+                                                    axios
+                                                    .get(`http://localhost:8080/post/${post_id}`)
+                                                    .then(response=>{setPost(response.data)})
+                                                    .catch(err=>{console.log(err.data);})
+                                                    document.getElementById("textComm").value=""
+                                                    setComment("")                                                })
+                                                .catch(err=>{console.log(err.response);})
+                                            }}/>}
                                          </div>
                                         </>
                                     )
@@ -110,13 +127,12 @@ function Post(){
                                 })}
                                 
                                 </div>}
-                                <div className="gridComment">
+                                {state.userInfo.isLogged && <div className="gridComment">
                                     <input type="text"  className="textComm" id="textComm" placeholder="Add Comment" onChange={(e)=>setComment(e.target.value)}/> 
                                     <Link to={`/post/${post_id}`} className="linkPost" onClick={AddComment}>Post</Link>
-                                </div>
+                                </div>}
                             </div>
-                        </div>
-                    
+                        </div> 
                 }
             </div>
             <div></div>
