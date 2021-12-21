@@ -39,7 +39,7 @@ function LogIn(){
 
             navigate("/")
         })
-        .catch(err=>{console.log(err);})
+        .catch(err=>{setErrMsg("Something wrong happened try again")})
     }
 
     return(

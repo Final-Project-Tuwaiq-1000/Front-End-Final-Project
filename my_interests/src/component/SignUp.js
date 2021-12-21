@@ -33,7 +33,7 @@ function SignUp(){
 
     const getInfo = ()=>{
         if(userName.length<1 || password.length<1 || email.length<1 || confirmPassword.length<1){
-            setRequiredField("This Field is Requierd")
+            setErrMsg("Please fill all fields with * sign")
         }
         else{
             if(password !== confirmPassword){
@@ -62,27 +62,27 @@ function SignUp(){
                             <form method="POST" id="signup-form" class="signup-form">
                                 <h2 class="form-title">Sign UP</h2>
                                 <div class="form-group">
-                                    <input type="email" class="form-input" placeholder={requiredField.length>1? requiredField:"Email"} onChange={e=>setEmail(e.target.value.trim())}/>
+                                    <div className="errMsg">
+                                        {errMsg}
+                                    </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-input" name="name" id="name" placeholder={requiredField.length>1? requiredField:"User Name" } onChange={e=>setUserName(e.target.value.trim())}/>
+                                    <input type="email" class="form-input" placeholder={"Email * "} onChange={e=>setEmail(e.target.value.trim())}/>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-input" placeholder={requiredField.length>1? requiredField:"Password"} onChange={e=>setPassword(e.target.value.trim())}/>
+                                    <input type="text" class="form-input" name="name" id="name" placeholder={"User Name * " } onChange={e=>setUserName(e.target.value.trim())}/>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-input" placeholder={requiredField.length>1? requiredField:"Confirm Password"} onChange={e=>setConfirmPassword(e.target.value.trim())}/>
+                                    <input type="password" class="form-input" placeholder={"Password * "} onChange={e=>setPassword(e.target.value.trim())}/>
                                 </div>
                                 <div class="form-group">
-                                    <textarea class="form-input" placeholder={requiredField.length>1? requiredField:"Tell Us More About Your Self"} onChange={e=>setMoreInfo(e.target.value.trim())}/>
+                                    <input type="password" class="form-input" placeholder={"Confirm Password * "} onChange={e=>setConfirmPassword(e.target.value.trim())}/>
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-input" placeholder={"Tell Us More About Your Self"} onChange={e=>setMoreInfo(e.target.value.trim())}/>
                                 </div>
                                 <div class="form-group">
                                     <input type="button"  class="form-submit" value="Sign up" onClick={getInfo}/>
-                                </div>
-                                <div class="form-group">
-                                    <div className="form-title">
-                                        {errMsg}
-                                    </div>
                                 </div>
                             </form>
                         </div>
