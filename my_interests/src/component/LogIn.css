@@ -313,4 +313,5 @@ display-flex, .display-flex, .display-flex-center {
   
   .centerErr{
       text-align: center;
+      color: red;
   }

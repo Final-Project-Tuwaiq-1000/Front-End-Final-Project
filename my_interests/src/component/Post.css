@@ -83,3 +83,13 @@
   .dropdown:hover .dropbtn {
     background-color: #4444445b;
   }
+
+  .commentGrid{
+    display: grid;
+    grid-template-columns: 7rem 1fr 1fr;
+  }
+
+  .deleteIcon{
+    justify-self: end;
+    width: 1rem;
+  }

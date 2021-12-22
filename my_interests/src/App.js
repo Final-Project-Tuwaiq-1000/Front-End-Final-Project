@@ -8,6 +8,7 @@ import Profile from './component/Profile';
 import Post from './component/Post';
 import CreatePost from './component/CreatePost';
 import UpdatePost from './component/UpdatePost';
+import UpdateUser from './component/UpdateUser';
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
       <Route path="/Post/:post_id" element={<Post/>}/>
       <Route path="/CreatePost" element={<CreatePost/>}/>
       <Route path="/UpdatePost/:post_id" element={<UpdatePost/>}/>
+      <Route path="/UpdateUser/:user_id" element={<UpdateUser/>}/>
     </Routes>
     </>
   );

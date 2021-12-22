@@ -2,7 +2,9 @@ import axios from "axios"
 import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router"
-import { logIn } from "../reducers/actions"
+import { logIn, addToken } from "../reducers/actions"
+import jwt_decode from "jwt-decode";
+
 import "./LogIn.css"
 
 function LogIn(){
@@ -19,13 +21,25 @@ function LogIn(){
     }
 
     const getInfo = ()=>{
-        axios.post("http://localhost:8080/user/logIn",data)
+        axios
+        .post("http://localhost:8080/login",data)
         .then(response=>{
-            console.log(response.data);
-            dispatch(logIn(response.data))
+            const token =response.data.access_token
+            const decoded = jwt_decode(token);
+            const action = logIn({
+                "id":decoded.id,
+                "userName":decoded.userName,
+                "email":decoded.sub
+            })
+            console.log(action);
+            dispatch(action)
+
+            const action2 = addToken(token)
+            dispatch(action2)
+
             navigate("/")
         })
-        .catch(err=>{setErrMsg(err.response.data)})
+        .catch(err=>{setErrMsg("Something wrong happened try again")})
     }
 
     return(

@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios, { Axios } from "axios"
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { useNavigate, useParams } from "react-router"
@@ -21,7 +21,8 @@ function UpdatePost(){
 
     const state = useSelector((state)=>{
         return {
-            userInfo: state.UserReducer
+            userInfo: state.UserReducer,
+            token: state.UserReducer.token
         }
     })
 
@@ -34,8 +35,11 @@ function UpdatePost(){
                 setRequiredField("This Field is Requierd")
             }
             else{
+                const config = {
+                    headers:{Authorization: `Bearer ${state.token}`}
+                }
                 axios
-                .put(`http://localhost:8080/post/${post_id}`,data)
+                .put(`http://localhost:8080/post/${post_id}`,data,config)
                 .then(response=>navigate(`/Post/${post_id}`))
             }
         }
@@ -59,12 +63,12 @@ function UpdatePost(){
             <div class="container">
                 <div class="signup-content">
                     <form method="POST" id="signup-form" class="signup-form">
-                        <h2 class="form-title">Create Post</h2>
+                        <h2 class="form-title">Update Post</h2>
                         <div class="form-group">
-                            <textarea class="form-input" placeholder="Caption" defaultValue={caption} onChange={e=>setCaption(e.target.value)}/>
+                            <textarea class="form-input textArea" placeholder="Caption" defaultValue={post ===undefined?"": post.caption} onChange={e=>setCaption(e.target.value)}/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-input" placeholder="Image" defaultValue={img} onChange={e=>setImg(e.target.value)}/>
+                            <input type="text" class="form-input" placeholder="Image" defaultValue={post ===undefined?"":post.image} onChange={e=>setImg(e.target.value)}/>
                         </div>
                         <div class="form-group">
                             <input type="button" class="form-submit" value="Update" onClick={Update}/>

@@ -1,3 +1,9 @@
 .updatePost{
     margin-top: 6rem;
 }
+
+.textArea{
+    margin: 0rem;
+    width: 100%;
+    height: 7rem;
+}
