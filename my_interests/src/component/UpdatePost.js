@@ -32,7 +32,7 @@ function UpdatePost(){
         }
         else{
             if(caption.length<1 || img.length<1){
-                setRequiredField("This Field is Requierd")
+                setRequiredField("Fill All Fields")
             }
             else{
                 const config = {
@@ -74,6 +74,7 @@ function UpdatePost(){
                             <input type="button" class="form-submit" value="Update" onClick={Update}/>
                         </div>
                         <div class="form-group">
+                            {requiredField}
                         </div>
                     </form>
                 </div>

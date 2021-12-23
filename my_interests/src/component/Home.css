@@ -53,3 +53,14 @@
 .userName2{
     font-weight:600;
 }
+
+.categoryCSS{
+    text-align: left;
+    margin: 1rem;
+    font-weight: bolder;
+}
+
+.category2{
+    text-decoration: none;
+    color: black;
+}

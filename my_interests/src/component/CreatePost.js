@@ -2,6 +2,7 @@ import axios from "axios"
 import { useState } from "react"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router"
+import { useEffect } from "react"
 import "./CreatePost.css"
 
 function CreatePost(){
@@ -9,6 +10,9 @@ function CreatePost(){
     const [caption, setCaption] = useState("")
     const [img, setImg] = useState("")
     const [requiredField, setRequiredField] = useState()
+    const [categories, setCategories] = useState([])
+    const [postCategory, setPostCategory] = useState("")
+
     const state = useSelector((state)=>{
         return {
             userInfo: state.UserReducer,
@@ -20,7 +24,8 @@ function CreatePost(){
     const data = {
         "user":{"id":state.userInfo.userLogged.id==undefined?"":state.userInfo.userLogged.id},
         "caption":caption,
-        "image":img
+        "image":img,
+        "category":{"id":postCategory}
     }
     const Create = ()=>{
         if(state.userInfo.userLogged.id===undefined){
@@ -40,9 +45,17 @@ function CreatePost(){
             .catch(err=>{console.log(err.response.data)})
         }
     }
-        
-        
     }
+
+    useEffect(()=>{
+        axios
+        .get(`http://localhost:8080/category`)
+        .then(response=>{
+            setCategories(response.data)
+        })
+        .catch(err=>console.log(err.response))
+    })
+
     return(
         <>
             <div className="logInPage">
@@ -57,10 +70,19 @@ function CreatePost(){
                         <div class="form-group">
                             <input type="text" class="form-input" placeholder="Image" onChange={e=>setImg(e.target.value)}/>
                         </div>
-                        <div class="form-group">
-                            <input type="button" class="form-submit" value="Create" onClick={Create}/>
+                        <div class="form-group ">
+                            <select id="cars" className="option" onChange={(e)=>setPostCategory(e.target.value)}>
+                                <option value="">Choose Category</option>
+                                {categories.map(e=>{
+                                    return(
+                                    <option value={e.id}> {e.category} </option>
+                                    )
+                                })}
+                                
+                            </select>
                         </div>
                         <div class="form-group">
+                            <input type="button" class="form-submit" value="Create" onClick={Create}/>
                         </div>
                     </form>
                 </div>

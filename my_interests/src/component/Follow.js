@@ -57,7 +57,7 @@ function Follow(){
         .then(response=>{
             navigate('/')
         })
-        .catch(err=>setErrMsg(err.response.data))
+        .catch(err=>err.response.data === "You Already Follow this Category"?setErrMsg(err.response.data):console.log(err))
     }
 
     const UnFollowCategory = ()=>{
@@ -83,7 +83,7 @@ function Follow(){
                         <h2 class="form-title">Follow</h2>
                         <div class="form-group ">
                         <select id="cars" className="option" onChange={(e)=>setFollowCategory(e.target.value)}>
-                            <option value="">Choose Category</option>
+                            <option value="">Choose Subject</option>
                             {categories.map(e=>{
                                 return(
                                 <option value={e.id}> {e.category} </option>
@@ -118,7 +118,7 @@ function Follow(){
                         <h2 class="">UnFollow</h2>
                         <div class="form-group ">
                         <select id="cars" className="option" onChange={(e)=>setUnFollow(e.target.value)}>
-                            <option value="">Choose Category</option>
+                            <option value="">Choose Subject</option>
                             {myCategory.map(e=>{
                                 return(
                                 <option value={e.id}> {e.category.category} </option>

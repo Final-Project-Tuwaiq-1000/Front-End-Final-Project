@@ -18,6 +18,7 @@ function Post(){
     const {post_id} = useParams()
     const [post, setPost] = useState("")
     const [comment, setComment] =  useState("")
+    console.log(post);
 
     useEffect(()=>{
         axios
@@ -87,6 +88,7 @@ function Post(){
                                 }
                             </div>
                             <input type="image" src={post.image} className="imgWidth"/>
+                            <div className="categoryCSS">Subject: <Link to={`/category/${post.category.id}`} className="category2"> {post.category.category}</Link></div>
                             <div className="caption"><Link to={`/${post.user.id}`} className="userName2">{post.user.userName}</Link> {post.caption}</div>
                             <div>
                                 {post.comments == undefined ? "":
@@ -117,7 +119,7 @@ function Post(){
                                                     .then(response=>{setPost(response.data)})
                                                     .catch(err=>{console.log(err.data);})
                                                     document.getElementById("textComm").value=""
-                                                    setComment("")                                                })
+                                                    setComment("")})
                                                 .catch(err=>{console.log(err.response);})
                                             }}/>}
                                          </div>

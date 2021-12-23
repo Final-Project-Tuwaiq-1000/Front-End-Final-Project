@@ -23,10 +23,14 @@ function Home(){
     },[]);
 
     console.log(posts)
-    posts.map(e=>{e.category.postsC.map(ell=>newArray.push(ell))})
+    posts.map(e=>{e.category.postsC.map(ell=>newArray.push({
+        "id":e.category.id,
+        "category":e.category.category,
+        "post":ell
+    }))})
     console.log(newArray);
     const sortedArray =  newArray.slice().sort((a,b) => {
-    return b.id - a.id
+    return b.post.id - a.post.id
 })
     console.log(sortedArray.reverse());
     
@@ -41,12 +45,14 @@ function Home(){
                         <div className="postDiv">
                             <div className="postHead">
                                 <div className="divWidth">
-                                <input type="image" src={e.user.personalImg} className="personalImg"/>
+                                <input type="image" src={e.post.user.personalImg} className="personalImg"/>
                                 </div>
-                                <Link to={`/${e.user.id}`} className="userName">{e.user.userName}</Link>
+                                
+                                <Link to={`/${e.post.user.id}`} className="userName">{e.post.user.userName}</Link>
                             </div>
-                            <Link to={`/Post/${e.id}`}><input type="image" src={e.image} className="imgWidth"/></Link>
-                            <div className="caption"><Link to={`/${e.user.id}`} className="userName2">{e.user.userName}</Link> {e.caption}</div>
+                            <Link to={`/Post/${e.post.id}`}><input type="image" src={e.post.image} className="imgWidth"/></Link>
+                            <div className="categoryCSS">Subject: <Link to={`category/${e.id}`} className="category2"> {e.category}</Link></div>
+                            <div className="caption"><Link to={`/${e.post.user.id}`} className="userName2">{e.post.user.userName}</Link> {e.post.caption}</div>
                         </div>
                         </>
                     )
