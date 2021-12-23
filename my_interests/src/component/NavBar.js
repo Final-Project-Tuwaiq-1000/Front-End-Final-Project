@@ -29,6 +29,7 @@ console.log(state.userInfo.userLogged);
                            {state.userInfo.isLogged && <li><Link to={"/createPost"}><input type="image"src="https://cdn2.iconfinder.com/data/icons/lucid-generic/24/new_artboard_file_create_post-512.png" className="imgNav"/> </Link> </li>}
                             {!state.userInfo.isLogged &&<li><Link to={"/LogIn"} className="textDesign"><input type="image"src="https://image.flaticon.com/icons/png/512/152/152532.png" className="imgNav"/></Link></li>}
                             {!state.userInfo.isLogged &&<li><Link to={"/SignUp"} className="textDesign"><input type="image"src="https://static.thenounproject.com/png/736543-200.png" className="imgNav"/></Link></li>}
+                            {state.userInfo.isLogged && <li><Link to={"/Follow"}><input type="image"src="https://cdn-icons-png.flaticon.com/512/3893/3893183.png" className="imgNav"/> </Link> </li>}
                             {state.userInfo.isLogged &&<li onClick={LogOut}><Link to={"/LogIn"} className="textDesign"><input type="image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_logOut-ltr.svg/2048px-OOjs_UI_icon_logOut-ltr.svg.png" className="imgNav"/></Link></li>}
                         </ul>
                     </div>

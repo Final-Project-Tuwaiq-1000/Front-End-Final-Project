@@ -1,0 +1,13 @@
+.gridFllow{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.option{
+    width: 100%;
+    padding-top: 17px;
+    padding-right: 20px;
+    padding-bottom: 17px;
+    padding-left: 20px;
+    font-family: 'Times New Roman', Times, serif;
+}

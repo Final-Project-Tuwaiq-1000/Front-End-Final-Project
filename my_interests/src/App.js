@@ -9,10 +9,10 @@ import Post from './component/Post';
 import CreatePost from './component/CreatePost';
 import UpdatePost from './component/UpdatePost';
 import UpdateUser from './component/UpdateUser';
+import Follow from './component/Follow';
 
 function App() {
 
-  const navigate = useNavigate()
   return (
     <>
     <NavBar/>
@@ -25,6 +25,7 @@ function App() {
       <Route path="/CreatePost" element={<CreatePost/>}/>
       <Route path="/UpdatePost/:post_id" element={<UpdatePost/>}/>
       <Route path="/UpdateUser/:user_id" element={<UpdateUser/>}/>
+      <Route path="/Follow" element={<Follow/>}/>
     </Routes>
     </>
   );
