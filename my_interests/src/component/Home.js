@@ -1,25 +1,41 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import "./Home.css"
 
 function Home(){
 
     const [posts , setPosts] = useState([])
+    const state = useSelector((state)=>{
+        return {
+            userInfo: state.UserReducer,
+            token: state.UserReducer.token
+        }
+    })
+    const newArray = []
 
     useEffect(()=>{
         axios
-        .get("http://localhost:8080/post")
-        .then((response)=>{setPosts(response.data)})
+        .get(`http://localhost:8080/follow/${state.userInfo.userLogged.id}`)
+        .then((response)=>setPosts(response.data))
         .catch((error)=>{console.log(error);})
     },[]);
 
+    console.log(posts)
+    posts.map(e=>{e.category.postsC.map(ell=>newArray.push(ell))})
+    console.log(newArray);
+    const sortedArray =  newArray.slice().sort((a,b) => {
+    return b.id - a.id
+})
+    console.log(sortedArray.reverse());
+    
     return(
         <>
         <div className='mainPage'>
             <div></div>
             <div className="midGrid">
-                {posts.map(e=>{
+                {sortedArray.reverse().map(e=>{
                     return(
                         <>
                         <div className="postDiv">
