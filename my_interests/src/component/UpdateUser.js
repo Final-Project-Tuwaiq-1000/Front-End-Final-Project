@@ -41,7 +41,6 @@ function UpdateUser(){
     const UpdateInfo = ()=>{
         if(email.length<1 || userName.length<1){
             setRequiredField("Please Fill All Feilds With ' * ' Sign")
-            console.log("NOOOO");
     }
     else{
         const config = {

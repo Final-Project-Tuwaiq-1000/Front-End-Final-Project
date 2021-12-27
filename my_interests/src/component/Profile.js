@@ -23,6 +23,11 @@ function Profile(){
         .then(response=>{setUserInfo(response.data)})
         .catch(err=>{console.log(err)})
     },[])
+
+    const sortedArray = userInfo.posts == undefined ?[]: userInfo.posts.slice().sort((a,b) => {
+        return b.id - a.id
+    })
+
     return(
         <>  
             <div className="mainProfile">
@@ -51,7 +56,7 @@ function Profile(){
                             <div>Posts</div>
                             <div className="widthDiv"></div>
                             {userInfo.posts == undefined ?"":
-                            userInfo.posts.map(e=>{
+                            sortedArray.map(e=>{
                                 return(
                                 <div>
                                     <Link to={`/Post/${e.id}`}><input type="image" className="imgSize" src={e.image}/></Link>

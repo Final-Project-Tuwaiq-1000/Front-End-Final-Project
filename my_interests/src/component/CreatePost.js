@@ -3,15 +3,17 @@ import { useState } from "react"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router"
 import { useEffect } from "react"
+import React from "react"
 import "./CreatePost.css"
 
 function CreatePost(){
 
     const [caption, setCaption] = useState("")
-    const [img, setImg] = useState("")
     const [requiredField, setRequiredField] = useState()
     const [categories, setCategories] = useState([])
     const [postCategory, setPostCategory] = useState("")
+    const [loading, setLoading] = useState(false)
+    const [image, setImage] = useState("")
 
     const state = useSelector((state)=>{
         return {
@@ -24,7 +26,7 @@ function CreatePost(){
     const data = {
         "user":{"id":state.userInfo.userLogged.id==undefined?"":state.userInfo.userLogged.id},
         "caption":caption,
-        "image":img,
+        "image":image,
         "category":{"id":postCategory}
     }
     const Create = ()=>{
@@ -32,7 +34,7 @@ function CreatePost(){
             navigate("/LogIn")
         }
         else{
-        if(caption.length<1 || img.length<1){
+        if(caption.length<1 || image.length<1){
             setRequiredField("This Field is Requierd")
         }
         else{
@@ -54,7 +56,27 @@ function CreatePost(){
             setCategories(response.data)
         })
         .catch(err=>console.log(err.response))
-    })
+    },[])
+
+    
+    const UploadImage = async e=>{
+        const files = e.target.files
+        const data = new FormData()
+        data.append('file',files[0])
+        data.append('upload_preset', 'my_interests_images')
+        setLoading(true)
+
+        const res = await fetch("https://api.cloudinary.com/v1_1/my-interests-nasser/image/upload",
+        {
+            method:'POST',
+            body:data
+        })
+
+        const file = await res.json()
+        console.log(file);
+        setImage(file.secure_url)
+        setLoading(false)
+    }
 
     return(
         <>
@@ -65,13 +87,13 @@ function CreatePost(){
                     <form method="POST" id="signup-form" class="signup-form">
                         <h2 class="form-title">Create Post</h2>
                         <div class="form-group">
-                            <textarea class="form-input textArea" placeholder="Caption" onChange={e=>setCaption(e.target.value)}/>
+                            <input type="file" name="file" className="form-input backGroundUpload" placeholder="Upload an Image" onChange={UploadImage}/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-input" placeholder="Image" onChange={e=>setImg(e.target.value)}/>
+                            <textarea class="form-input textArea" placeholder="Caption" onChange={e=>setCaption(e.target.value)}/>
                         </div>
                         <div class="form-group ">
-                            <select id="cars" className="option" onChange={(e)=>setPostCategory(e.target.value)}>
+                            <select id="cars" className="option" onChange={(e)=>{setPostCategory(e.target.value)}}>
                                 <option value="">Choose Category</option>
                                 {categories.map(e=>{
                                     return(

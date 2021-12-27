@@ -13,6 +13,7 @@
 
 .imgWidth{
     width: 100%;
+    max-height: 40rem;
 }
 
 .postHead{
@@ -63,4 +64,12 @@
 .category2{
     text-decoration: none;
     color: black;
+}
+
+.linkHome{
+    color: black;
+}
+
+.textHome{
+    font-size:xx-large;
 }

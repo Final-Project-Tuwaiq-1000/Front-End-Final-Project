@@ -83,7 +83,7 @@ function Follow(){
                         <h2 class="form-title">Follow</h2>
                         <div class="form-group ">
                         <select id="cars" className="option" onChange={(e)=>setFollowCategory(e.target.value)}>
-                            <option value="">Choose Subject</option>
+                            <option value="">Choose Topic</option>
                             {categories.map(e=>{
                                 return(
                                 <option value={e.id}> {e.category} </option>
@@ -118,7 +118,7 @@ function Follow(){
                         <h2 class="">UnFollow</h2>
                         <div class="form-group ">
                         <select id="cars" className="option" onChange={(e)=>setUnFollow(e.target.value)}>
-                            <option value="">Choose Subject</option>
+                            <option value="">Choose Topic</option>
                             {myCategory.map(e=>{
                                 return(
                                 <option value={e.id}> {e.category.category} </option>
@@ -129,11 +129,6 @@ function Follow(){
                         </div>
                         <div class="form-group">
                             <input type="button" class="form-submit" value="Un Follow" onClick={UnFollowCategory}/>
-                        </div>
-                        <div class="form-group">
-                            <div className="centerErr">
-                                errMsg
-                            </div>
                         </div>
                     </form>
                 </div>

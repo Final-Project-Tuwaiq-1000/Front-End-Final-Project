@@ -39,7 +39,11 @@ function Home(){
         <div className='mainPage'>
             <div></div>
             <div className="midGrid">
-                {sortedArray.reverse().map(e=>{
+                {state.userInfo.isLogged===false?
+                <div className="textHome">
+                    Log in <Link to="/LogIn" className="linkHome">here</Link> to follow topics and see it's posts or <Link to="/SignUp" className="linkHome"> Sign Up</Link>
+                </div>
+                 :sortedArray.reverse().map(e=>{
                     return(
                         <>
                         <div className="postDiv">
@@ -51,7 +55,7 @@ function Home(){
                                 <Link to={`/${e.post.user.id}`} className="userName">{e.post.user.userName}</Link>
                             </div>
                             <Link to={`/Post/${e.post.id}`}><input type="image" src={e.post.image} className="imgWidth"/></Link>
-                            <div className="categoryCSS">Subject: <Link to={`category/${e.id}`} className="category2"> {e.category}</Link></div>
+                            <div className="categoryCSS">Topic: <Link to={`Topic/${e.id}`} className="category2"> {e.category}</Link></div>
                             <div className="caption"><Link to={`/${e.post.user.id}`} className="userName2">{e.post.user.userName}</Link> {e.post.caption}</div>
                         </div>
                         </>
