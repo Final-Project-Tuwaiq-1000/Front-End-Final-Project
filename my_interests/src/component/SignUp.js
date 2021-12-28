@@ -1,8 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
-import { logIn } from "../reducers/actions";
 import "./SignUp.css"
 
 
@@ -12,11 +10,10 @@ function SignUp(){
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
     const [moreInfo, setMoreInfo] = useState("")
-    const [checkPass, setCheckPass] = useState("")
-    const[requiredField,setRequiredField] = useState("")
     const [errMsg,setErrMsg] = useState()
+    const [profileImg, setProfileImg] = useState("")
+    const [loading, setLoading] = useState("")
 
-    const dispatch = useDispatch()
 
     const navigate = useNavigate()
      
@@ -26,7 +23,7 @@ function SignUp(){
             "email":email,
             "password":password,
             "moreInfo":moreInfo,
-            "personalImg":"https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
+            "personalImg":profileImg ===""?"https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png":profileImg
         },
         "role_id":1
     }
@@ -37,9 +34,7 @@ function SignUp(){
         }
         else{
             if(password !== confirmPassword){
-                setCheckPass("Password is NOT the Same")
-                document.getElementById("pass").value = ""
-                document.getElementById("cpass").value = ""
+                setErrMsg("Password is NOT the Same")
             }
 
             else{
@@ -51,6 +46,23 @@ function SignUp(){
                 .catch(err=>{setErrMsg(err.response.data)})
         }
     }
+}
+const UploadImage = async e=>{
+    const files = e.target.files
+    const data = new FormData()
+    data.append('file',files[0])
+    data.append('upload_preset', 'my_interests_images')
+    setLoading(true)
+
+    const res = await fetch("https://api.cloudinary.com/v1_1/my-interests-nasser/image/upload",
+    {
+        method:'POST',
+        body:data
+    })
+
+    const file = await res.json()
+    setProfileImg(file.secure_url)
+    setLoading(false)
 }
     return(
         <>
@@ -80,6 +92,12 @@ function SignUp(){
                                 </div>
                                 <div class="form-group">
                                     <textarea class="form-input" placeholder={"Tell Us More About Your Self"} onChange={e=>setMoreInfo(e.target.value.trim())}/>
+                                </div>
+                                <div class="form-group">
+                                    <label htmlFor="filePicker">
+                                        Upload Image for your Profile:
+                                    </label>
+                                    <input type="file" name="file" id="filePicker" className="form-input backGroundUpload" placeholder="Upload an Image" onChange={UploadImage}/>
                                 </div>
                                 <div class="form-group">
                                     <input type="button"  class="form-submit" value="Sign up" onClick={getInfo}/>

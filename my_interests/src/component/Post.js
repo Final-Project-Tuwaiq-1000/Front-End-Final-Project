@@ -59,7 +59,6 @@ function Post(){
         axios
         .delete(`http://localhost:8080/post/${post_id}`,config)
         .then(response=>{
-            console.log("Deleted");
             navigate(`/`)
         })
         .catch(err=>{console.log(err.response);})
@@ -87,6 +86,7 @@ function Post(){
                                 }
                             </div>
                             <input type="image" src={post.image} className="imgWidth"/>
+                            <div className="categoryCSS">Topic: <Link to={`/Topic/${post.category.id}`} className="category2"> {post.category.category}</Link></div>
                             <div className="caption"><Link to={`/${post.user.id}`} className="userName2">{post.user.userName}</Link> {post.caption}</div>
                             <div>
                                 {post.comments == undefined ? "":
@@ -107,17 +107,15 @@ function Post(){
                                                  const config = {
                                                     headers:{Authorization: `Bearer ${state.token}`}
                                                 }
-                                                
                                                 axios
                                                 .delete(`http://localhost:8080/comment/${e.id}`,config)
                                                 .then(response=>{
-                                                    console.log("Deleted");
                                                     axios
                                                     .get(`http://localhost:8080/post/${post_id}`)
                                                     .then(response=>{setPost(response.data)})
                                                     .catch(err=>{console.log(err.data);})
                                                     document.getElementById("textComm").value=""
-                                                    setComment("")                                                })
+                                                    setComment("")})
                                                 .catch(err=>{console.log(err.response);})
                                             }}/>}
                                          </div>

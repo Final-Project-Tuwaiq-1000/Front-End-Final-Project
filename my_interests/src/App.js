@@ -1,4 +1,4 @@
-import { Route, Routes, useNavigate } from 'react-router';
+import { Route, Routes } from 'react-router';
 import './App.css';
 import NavBar from './component/NavBar';
 import Home from './component/Home';
@@ -9,10 +9,12 @@ import Post from './component/Post';
 import CreatePost from './component/CreatePost';
 import UpdatePost from './component/UpdatePost';
 import UpdateUser from './component/UpdateUser';
+import Follow from './component/Follow';
+import Topic from './component/Topic';
+import Search from './component/Search';
 
 function App() {
 
-  const navigate = useNavigate()
   return (
     <>
     <NavBar/>
@@ -25,6 +27,9 @@ function App() {
       <Route path="/CreatePost" element={<CreatePost/>}/>
       <Route path="/UpdatePost/:post_id" element={<UpdatePost/>}/>
       <Route path="/UpdateUser/:user_id" element={<UpdateUser/>}/>
+      <Route path="/Follow" element={<Follow/>}/>
+      <Route path="/Topic/:topic_id" element={<Topic/>}/>
+      <Route path="/Search" element={<Search/>}/>
     </Routes>
     </>
   );

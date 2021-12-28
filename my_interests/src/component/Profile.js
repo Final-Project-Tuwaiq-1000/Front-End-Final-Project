@@ -23,6 +23,11 @@ function Profile(){
         .then(response=>{setUserInfo(response.data)})
         .catch(err=>{console.log(err)})
     },[])
+
+    const sortedArray = userInfo.posts == undefined ?[]: userInfo.posts.slice().sort((a,b) => {
+        return b.id - a.id
+    })
+
     return(
         <>  
             <div className="mainProfile">
@@ -38,7 +43,7 @@ function Profile(){
                         <div className="update">
                         {state.userInfo.userLogged.id === undefined ? false :state.userInfo.userLogged.id == user_id&& <div class="dropdown">
                                     <button class="dropbtn">More Options</button>
-                                    <div class="dropdown-content">
+                                    <div className="dropdown-content textSizeUpdate">
                                         <Link to={`/UpdateUser/${user_id}`} >Update My Information</Link>
                                     </div>
                                 </div>
@@ -51,7 +56,7 @@ function Profile(){
                             <div>Posts</div>
                             <div className="widthDiv"></div>
                             {userInfo.posts == undefined ?"":
-                            userInfo.posts.map(e=>{
+                            sortedArray.map(e=>{
                                 return(
                                 <div>
                                     <Link to={`/Post/${e.id}`}><input type="image" className="imgSize" src={e.image}/></Link>

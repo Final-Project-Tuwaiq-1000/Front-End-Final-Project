@@ -17,12 +17,16 @@ function UpdateUser(){
     const [email , setEmail] = useState("")
     const [moreInfo, setMoreInfo] = useState("")
     const[requiredField,setRequiredField] = useState("")
+    const [loading, setLoading] = useState(false)
+    const [image, setImage] = useState("")
+
     const {user_id} = useParams()
 
     const data = {
         "userName":userName,
         "email":email,
-        "moreInfo":moreInfo
+        "moreInfo":moreInfo,
+        "personalImg":image
     }
 
     const navigate = useNavigate()
@@ -34,6 +38,7 @@ function UpdateUser(){
             setUserName(`${response.data.userName}`)
             setEmail(`${response.data.email}`)
             setMoreInfo(`${response.data.moreInfo}`)
+            setImage(`${response.data.personalImg}`)
         })
         .catch(err=>{console.log(err.response);})
     },[])
@@ -41,7 +46,6 @@ function UpdateUser(){
     const UpdateInfo = ()=>{
         if(email.length<1 || userName.length<1){
             setRequiredField("Please Fill All Feilds With ' * ' Sign")
-            console.log("NOOOO");
     }
     else{
         const config = {
@@ -59,6 +63,25 @@ function UpdateUser(){
         setEmail(e.target.value);
     };
 
+    const UploadImage = async e=>{
+        const files = e.target.files
+        const data = new FormData()
+        data.append('file',files[0])
+        data.append('upload_preset', 'my_interests_images')
+        setLoading(true)
+
+        const res = await fetch("https://api.cloudinary.com/v1_1/my-interests-nasser/image/upload",
+        {
+            method:'POST',
+            body:data
+        })
+
+        const file = await res.json()
+        console.log(file);
+        setImage(file.secure_url)
+        setLoading(false)
+    }
+
 
     return(
         <>
@@ -70,6 +93,9 @@ function UpdateUser(){
                             <form method="POST" id="signup-form" class="signup-form">
                                 <h2 class="form-title">Update User</h2>
                                 <div className="errMsg">{requiredField}</div>
+                                <div class="form-group">
+                                    <input type="file" name="file" className="form-input backGroundUpload" placeholder="Upload an Image" onChange={UploadImage}/>
+                                </div>
                                 <div class="form-group">
                                     <input type="email" class="form-input" defaultValue={email} placeholder={"Email * "} onChange={handleChangeEmail}/>
                                 </div>

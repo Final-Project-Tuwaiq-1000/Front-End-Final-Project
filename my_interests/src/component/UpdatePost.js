@@ -32,7 +32,7 @@ function UpdatePost(){
         }
         else{
             if(caption.length<1 || img.length<1){
-                setRequiredField("This Field is Requierd")
+                setRequiredField("Fill All Fields")
             }
             else{
                 const config = {
@@ -43,7 +43,6 @@ function UpdatePost(){
                 .then(response=>navigate(`/Post/${post_id}`))
             }
         }
-        console.log(data);
     }
 
     useEffect(()=>{
@@ -68,12 +67,10 @@ function UpdatePost(){
                             <textarea class="form-input textArea" placeholder="Caption" defaultValue={post ===undefined?"": post.caption} onChange={e=>setCaption(e.target.value)}/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-input" placeholder="Image" defaultValue={post ===undefined?"":post.image} onChange={e=>setImg(e.target.value)}/>
-                        </div>
-                        <div class="form-group">
                             <input type="button" class="form-submit" value="Update" onClick={Update}/>
                         </div>
                         <div class="form-group">
+                            {requiredField}
                         </div>
                     </form>
                 </div>

@@ -1,36 +1,61 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import "./Home.css"
 
 function Home(){
 
     const [posts , setPosts] = useState([])
+    const state = useSelector((state)=>{
+        return {
+            userInfo: state.UserReducer,
+            token: state.UserReducer.token
+        }
+    })
+    const newArray = []
 
     useEffect(()=>{
         axios
-        .get("http://localhost:8080/post")
-        .then((response)=>{setPosts(response.data)})
+        .get(`http://localhost:8080/follow/${state.userInfo.userLogged.id}`)
+        .then((response)=>setPosts(response.data))
         .catch((error)=>{console.log(error);})
     },[]);
 
+    posts.map(e=>{e.category.postsC.map(ell=>newArray.push({
+        "id":e.category.id,
+        "category":e.category.category,
+        "post":ell
+    }))})
+    console.log(newArray);
+    const sortedArray =  newArray.slice().sort((a,b) => {
+    return b.post.id - a.post.id
+})
+    console.log(sortedArray.reverse());
+    
     return(
         <>
         <div className='mainPage'>
             <div></div>
             <div className="midGrid">
-                {posts.map(e=>{
+                {state.userInfo.isLogged===false?
+                <div className="textHome">
+                    Log in <Link to="/LogIn" className="linkHome">here</Link> to follow topics and see it's posts or <Link to="/SignUp" className="linkHome"> Sign Up</Link>
+                </div>
+                 :sortedArray.reverse().map(e=>{
                     return(
                         <>
                         <div className="postDiv">
                             <div className="postHead">
                                 <div className="divWidth">
-                                <input type="image" src={e.user.personalImg} className="personalImg"/>
+                                <input type="image" src={e.post.user.personalImg} className="personalImg"/>
                                 </div>
-                                <Link to={`/${e.user.id}`} className="userName">{e.user.userName}</Link>
+                                
+                                <Link to={`/${e.post.user.id}`} className="userName">{e.post.user.userName}</Link>
                             </div>
-                            <Link to={`/Post/${e.id}`}><input type="image" src={e.image} className="imgWidth"/></Link>
-                            <div className="caption"><Link to={`/${e.user.id}`} className="userName2">{e.user.userName}</Link> {e.caption}</div>
+                            <Link to={`/Post/${e.post.id}`}><input type="image" src={e.post.image} className="imgWidth"/></Link>
+                            <div className="categoryCSS">Topic: <Link to={`Topic/${e.id}`} className="category2"> {e.category}</Link></div>
+                            <div className="caption"><Link to={`/${e.post.user.id}`} className="userName2">{e.post.user.userName}</Link> {e.post.caption}</div>
                         </div>
                         </>
                     )

@@ -40,6 +40,7 @@
 .imgSize{
     margin-top: 1rem;
     width: 18rem;
+    height: 12rem;
     margin: 1rem;
     align-self: center;
     justify-self: center;
@@ -57,6 +58,7 @@
     align-content: center;
     justify-items: center;
     justify-content: center;
+    font-size:x-large;
 }
 
 .widthDiv{
@@ -66,4 +68,8 @@
 .update{
     justify-self:end;
     align-items: center;
+}
+
+.textSizeUpdate{
+    font-size:medium;
 }

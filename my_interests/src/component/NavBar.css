@@ -9,7 +9,7 @@
     border-bottom-color:black ;
     width: 100%;
     z-index: 3;
-    height: 4rem;
+    height: 5rem;
 }
 
 .navbar .nav, .navbar .nav > li {
@@ -25,9 +25,24 @@
   .textDesign{
       text-decoration: none;
       color: black;
+      font-weight: bold;
   }
 
   .imgNav{
       align-self: center;
-      width: 1.5rem;
+      width: 2.5rem;
   }
+
+  .textSize1{
+      font-size:1.5rem;
+  }
+
+  .imgSizeNav{
+    width: 2.5rem;
+    height: 2.5rem;
+    color: black;
+    }
+
+    .textSize1{
+        float: left;
+    }

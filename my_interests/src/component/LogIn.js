@@ -31,7 +31,6 @@ function LogIn(){
                 "userName":decoded.userName,
                 "email":decoded.sub
             })
-            console.log(action);
             dispatch(action)
 
             const action2 = addToken(token)
