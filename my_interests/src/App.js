@@ -11,6 +11,7 @@ import UpdatePost from './component/UpdatePost';
 import UpdateUser from './component/UpdateUser';
 import Follow from './component/Follow';
 import Topic from './component/Topic';
+import Search from './component/Search';
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
       <Route path="/UpdateUser/:user_id" element={<UpdateUser/>}/>
       <Route path="/Follow" element={<Follow/>}/>
       <Route path="/Topic/:topic_id" element={<Topic/>}/>
+      <Route path="/Search" element={<Search/>}/>
     </Routes>
     </>
   );

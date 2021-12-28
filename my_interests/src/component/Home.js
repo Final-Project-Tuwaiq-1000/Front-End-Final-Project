@@ -22,7 +22,6 @@ function Home(){
         .catch((error)=>{console.log(error);})
     },[]);
 
-    console.log(posts)
     posts.map(e=>{e.category.postsC.map(ell=>newArray.push({
         "id":e.category.id,
         "category":e.category.category,

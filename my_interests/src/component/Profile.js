@@ -43,7 +43,7 @@ function Profile(){
                         <div className="update">
                         {state.userInfo.userLogged.id === undefined ? false :state.userInfo.userLogged.id == user_id&& <div class="dropdown">
                                     <button class="dropbtn">More Options</button>
-                                    <div class="dropdown-content">
+                                    <div className="dropdown-content textSizeUpdate">
                                         <Link to={`/UpdateUser/${user_id}`} >Update My Information</Link>
                                     </div>
                                 </div>
