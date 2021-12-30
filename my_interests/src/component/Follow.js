@@ -129,6 +129,8 @@ function Follow(){
                         <div class="form-group">
                             <input type="button" class="form-submit" value="Un Follow" onClick={UnFollowCategory}/>
                         </div>
+                        <div class="form-group">
+                        </div>
                     </form>
                 </div>
             </div>

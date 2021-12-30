@@ -30,6 +30,7 @@ function Home(){
     const sortedArray =  newArray.slice().sort((a,b) => {
     return b.post.id - a.post.id
 })
+console.log(sortedArray);
     
     return(
         <>
@@ -37,12 +38,11 @@ function Home(){
             <div></div>
             <div className="midGrid">
                 <h1>Time Line</h1>
-                <div className="scrollDiv">
                 {state.userInfo.isLogged===false?
                 <div className="textHome">
                     Log in <Link to="/LogIn" className="linkHome">here</Link> to follow topics and see it's posts or <Link to="/SignUp" className="linkHome"> Sign Up</Link>
                 </div>
-                 :sortedArray.reverse().map(e=>{
+                 :sortedArray.map(e=>{
                     return(
                         <>
                         <div className="postDiv">
@@ -60,7 +60,6 @@ function Home(){
                         </>
                     )
                 })}
-                </div>
             </div>
             <div></div>
     </div>
