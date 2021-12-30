@@ -25,7 +25,6 @@ function Follow(){
         axios
         .get(`http://localhost:8080/category`)
         .then(response=>{
-            console.log(response.data);
             setCategories(response.data)
         })
         .catch(err=>{console.log(err.response);})

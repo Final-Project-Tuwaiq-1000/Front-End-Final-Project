@@ -35,6 +35,7 @@ function Post(){
     const navigate = useNavigate()
 
     const AddComment =()=>{
+        if (comment.length>0){
         const config = {
             headers:{Authorization: `Bearer ${state.token}`}
         }
@@ -47,7 +48,8 @@ function Post(){
             .catch(err=>{console.log(err.data);})
             document.getElementById("textComm").value=""
             setComment("")
-        })
+        })}
+        
     }
     
 
@@ -127,7 +129,7 @@ function Post(){
                                 </div>}
                                 {state.userInfo.isLogged && <div className="gridComment">
                                     <input type="text"  className="textComm" id="textComm" placeholder="Add Comment" onChange={(e)=>setComment(e.target.value)}/> 
-                                    <Link to={`/post/${post_id}`} className="linkPost" onClick={AddComment}>Post</Link>
+                                    <Link to={`/post/${post_id}`} className="linkPost" onClick={AddComment}>Send</Link>
                                 </div>}
                             </div>
                         </div> 

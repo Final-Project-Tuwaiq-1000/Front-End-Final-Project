@@ -29,6 +29,7 @@ function LogIn(){
             const action = logIn({
                 "id":decoded.id,
                 "userName":decoded.userName,
+                "userRole":decoded.roles[0],
                 "email":decoded.sub
             })
             dispatch(action)

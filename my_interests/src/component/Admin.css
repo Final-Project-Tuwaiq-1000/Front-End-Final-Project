@@ -1,0 +1,10 @@
+.gridAdminPage{
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+}
+
+.textAdmin{
+    text-decoration: none;
+    color: black;
+}

@@ -28,7 +28,7 @@ function Search(){
             <div class="container">
                 <div class="signup-content">
                     <form method="POST" id="signup-form" class="signup-form">
-                        <h2 class="">Search</h2>
+                        <h2 class="">Search By Topic</h2>
                         <div class="form-group ">
                         <select id="cars" className="option" onChange={(e)=>setSearch(e.target.value)}>
                             <option value="">Choose Topic</option>

@@ -27,17 +27,17 @@ function Home(){
         "category":e.category.category,
         "post":ell
     }))})
-    console.log(newArray);
     const sortedArray =  newArray.slice().sort((a,b) => {
     return b.post.id - a.post.id
 })
-    console.log(sortedArray.reverse());
     
     return(
         <>
         <div className='mainPage'>
             <div></div>
             <div className="midGrid">
+                <h1>Time Line</h1>
+                <div className="scrollDiv">
                 {state.userInfo.isLogged===false?
                 <div className="textHome">
                     Log in <Link to="/LogIn" className="linkHome">here</Link> to follow topics and see it's posts or <Link to="/SignUp" className="linkHome"> Sign Up</Link>
@@ -60,6 +60,7 @@ function Home(){
                         </>
                     )
                 })}
+                </div>
             </div>
             <div></div>
     </div>

@@ -12,6 +12,8 @@ import UpdateUser from './component/UpdateUser';
 import Follow from './component/Follow';
 import Topic from './component/Topic';
 import Search from './component/Search';
+import Admin from './component/Admin';
+import AddTopic from './component/AddTopic';
 
 function App() {
 
@@ -30,6 +32,8 @@ function App() {
       <Route path="/Follow" element={<Follow/>}/>
       <Route path="/Topic/:topic_id" element={<Topic/>}/>
       <Route path="/Search" element={<Search/>}/>
+      <Route path="/Admin" element={<Admin/>}/>
+      <Route path="/Admin/AddTopic" element={<AddTopic/>}/>
     </Routes>
     </>
   );
