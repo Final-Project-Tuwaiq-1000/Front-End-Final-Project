@@ -6,30 +6,31 @@ import { useSelector } from "react-redux";
 function AddTopic() {
   const [topic, setTopic] = useState();
 
-  const state = useSelector((state)=>{
+  const state = useSelector((state) => {
     return {
-        userInfo: state.UserReducer,
-        token: state.UserReducer.token
-    }
-})
+      userInfo: state.UserReducer,
+      token: state.UserReducer.token,
+    };
+  });
 
   const data = {
-    "category":topic
-  }
+    category: topic,
+  };
 
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const CreateTopic = () => {
-      const config = {
-        headers:{Authorization: `Bearer ${state.token}`}
-    }
+    const config = {
+      headers: { Authorization: `Bearer ${state.token}` },
+    };
     axios
-    .post("http://localhost:8080/category",data,config)
-    .then(response=>{
-        navigate("/Admin")
-    })
-    .catch(err=>{console.log(err.response)})
+      .post("http://localhost:8080/category", data, config)
+      .then((response) => {
+        navigate("/Admin");
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
   };
 
   return (

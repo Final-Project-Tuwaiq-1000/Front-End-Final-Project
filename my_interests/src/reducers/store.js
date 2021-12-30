@@ -1,7 +1,7 @@
-import {combineReducers, createStore} from "redux"
+import { combineReducers, createStore } from "redux";
 import UserReducer from "./reducer";
 
-const reducers = combineReducers ({UserReducer})
+const reducers = combineReducers({ UserReducer });
 
 const store = createStore(reducers);
 
