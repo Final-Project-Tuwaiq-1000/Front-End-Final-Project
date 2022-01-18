@@ -13,6 +13,7 @@ function Post() {
     };
   });
 
+  const [posts, setPosts] = useState([]);
   const { post_id } = useParams();
   const [post, setPost] = useState("");
   const [comment, setComment] = useState("");
@@ -25,6 +26,13 @@ function Post() {
       })
       .catch((err) => {
         console.log(err.data);
+      });
+
+    axios
+      .get(`http://localhost:8080/follow/${state.userInfo.userLogged.id}`)
+      .then((response) => setPosts(response.data))
+      .catch((error) => {
+        console.log(error);
       });
   }, []);
 
@@ -76,7 +84,23 @@ function Post() {
   return (
     <>
       <div className="mainPage">
-        <div></div>
+        <div>
+          <div className="thirdDiv">
+            <h1>Topics You Follow</h1>
+            {posts.map((e) => {
+              return (
+                <>
+                  <h3 className="categoryStyle">
+                    <Link to={`/Topic/${e.category.id}`} className="category2">
+                      {" "}
+                      {e.category.category}
+                    </Link>
+                  </h3>
+                </>
+              );
+            })}
+          </div>
+        </div>
         <div className="midGrid">
           {post === "" ? (
             <h1>THIS PAGE IS NOT EXIST</h1>
