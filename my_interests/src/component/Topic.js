@@ -49,7 +49,20 @@ function Topic() {
               return (
                 <>
                   <h3 className="categoryStyle">
-                    <Link to={`/Topic/${e.category.id}`} className="category2">
+                    <Link
+                      to={`/Topic/${e.category.id}`}
+                      className="category2"
+                      onClick={() => {
+                        axios
+                          .get(
+                            `http://localhost:8080/category/${e.category.id}`
+                          )
+                          .then((response) => {
+                            setPosts(response.data);
+                          })
+                          .catch((err) => console.log(err.response));
+                      }}
+                    >
                       {" "}
                       {e.category.category}
                     </Link>
