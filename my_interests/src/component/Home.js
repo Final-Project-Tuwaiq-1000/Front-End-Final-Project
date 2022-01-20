@@ -36,27 +36,30 @@ function Home() {
     return b.post.id - a.post.id;
   });
 
-  var copySortedArray = sortedArray.slice();
-
   return (
     <>
       <div className="mainPage">
         <div className="hideScroll">
-          <div className="thirdDiv">
-            <h1>Topics You Follow</h1>
-            {posts.map((e) => {
-              return (
-                <>
-                  <h3 className="categoryStyle">
-                    <Link to={`/Topic/${e.category.id}`} className="category2">
-                      {" "}
-                      {e.category.category}
-                    </Link>
-                  </h3>
-                </>
-              );
-            })}
-          </div>
+          {state.userInfo.isLogged && (
+            <div className="thirdDiv">
+              <h1>Topics You Follow</h1>
+              {posts.map((e) => {
+                return (
+                  <>
+                    <h3 className="categoryStyle">
+                      <Link
+                        to={`/Topic/${e.category.id}`}
+                        className="category2"
+                      >
+                        {" "}
+                        {e.category.category}
+                      </Link>
+                    </h3>
+                  </>
+                );
+              })}
+            </div>
+          )}
         </div>
         <div className="midGrid">
           <h1>Time Line</h1>
@@ -73,7 +76,7 @@ function Home() {
               </Link>
             </div>
           ) : (
-            copySortedArray.map((e) => {
+            sortedArray.map((e) => {
               return (
                 <>
                   <div className="postDiv">

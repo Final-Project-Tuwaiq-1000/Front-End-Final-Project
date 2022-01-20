@@ -1,48 +1,74 @@
-.navbar{
-    width: 100%;
-    background-color: w;
-    position: fixed;
-    top: 0;
-    background-color: rgba(var(--d87,255,255,255),1);
-    border-bottom: 1px solid rgba(var(--b6a,219,219,219),1);
-    border-bottom-style:solid ;
-    border-bottom-color:black ;
-    width: 100%;
-    z-index: 3;
-    height: 5rem;
+.navbar {
+  width: 100%;
+  /* background-color: white; */
+  position: fixed;
+  top: 0;
+  /* background-color: rgba(var(--d87, 255, 255, 255), 1); */
+  /* border-bottom: 1px solid rgba(var(--b6a, 219, 219, 219), 1);
+  border-bottom-style: solid;
+  border-bottom-color: black; */
+  width: 100%;
+  z-index: 3;
+  height: 5rem;
 }
 
-.navbar .nav, .navbar .nav > li {
-    display:inline-block;
-    margin: 1rem;
-   }
-  
-   .navbar-inner {
-    /* margin: 1rem; */
-    text-align:center;
-  }
+.nav-collapse {
+  display: flex;
+  justify-content: space-between;
+}
+.user-name {
+  display: flex;
+  float: right;
+  align-items: center;
+  margin-right: 1%;
+  font-size: 1.5rem;
+}
 
-  .textDesign{
-      text-decoration: none;
-      color: black;
-      font-weight: bold;
-  }
+.navbar .nav,
+.navbar .nav > li {
+  display: inline-block;
+  margin: 1rem;
+  margin-bottom: 00.1rem;
+  margin-top: 0.3rem;
+}
 
-  .imgNav{
-      align-self: center;
-      width: 2.5rem;
-  }
+.navbar-inner {
+  /* margin: 1rem; */
+  text-align: center;
+  background-image: linear-gradient(to bottom, #bcdee28f, #348ac49f);
+  background-color: rgba(240, 248, 255, 0);
+}
 
-  .textSize1{
-      font-size:1.5rem;
-  }
+.textDesign {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
 
-  .imgSizeNav{
-    width: 2.5rem;
-    height: 2.5rem;
-    color: black;
-    }
+.imgNav {
+  align-self: center;
+  width: 2.5rem;
+}
+.logo {
+  margin-left: 2%;
+}
 
-    .textSize1{
-        float: left;
-    }
+.logoImg {
+  display: flex;
+  width: 5rem;
+  float: left;
+}
+.textSize1 {
+  font-size: 1.5rem;
+  float: left;
+}
+.imgSizeNav {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: black;
+}
+
+.ulDiv {
+  display: grid;
+  grid-template-columns: 1fr;
+}

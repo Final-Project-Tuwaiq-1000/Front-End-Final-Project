@@ -2,10 +2,13 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./Profile.css";
+import { logOut } from "../reducers/actions";
 
 function Profile() {
+  const dispatch = useDispatch();
+
   const state = useSelector((state) => {
     return {
       userInfo: state.UserReducer,
@@ -15,6 +18,19 @@ function Profile() {
 
   const { user_id } = useParams();
   const [userInfo, setUserInfo] = useState([]);
+  const LogOut = () => {
+    // const config = {
+    //   headers: { Authorization: `Bearer ${state.token}` },
+    // };
+    axios
+      .delete(`http://localhost:8080/user/${state.userInfo.userLogged.id}`)
+      .then((response) => {
+        dispatch(logOut());
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
+  };
 
   useEffect(() => {
     axios
@@ -61,6 +77,9 @@ function Profile() {
                         <div className="dropdown-content textSizeUpdate">
                           <Link to={`/UpdateUser/${user_id}`}>
                             Update My Information
+                          </Link>
+                          <Link to={`/LogIn`} onClick={LogOut}>
+                            Delete my Account
                           </Link>
                         </div>
                       </div>
