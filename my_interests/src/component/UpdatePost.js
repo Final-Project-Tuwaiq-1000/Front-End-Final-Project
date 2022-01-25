@@ -37,11 +37,7 @@ function UpdatePost() {
           headers: { Authorization: `Bearer ${state.token}` },
         };
         axios
-          .put(
-            `https://final-project-tuwaiq.herokuapp.com/post/${post_id}`,
-            data,
-            config
-          )
+          .put(`http://localhost:8080/post/${post_id}`, data, config)
           .then((response) => navigate(`/Post/${post_id}`));
       }
     }
@@ -49,7 +45,7 @@ function UpdatePost() {
 
   useEffect(() => {
     axios
-      .get(`https://final-project-tuwaiq.herokuapp.com/post/${post_id}`)
+      .get(`http://localhost:8080/post/${post_id}`)
       .then((response) => {
         setPost(response.data);
         setCaption(`${response.data.caption}`);

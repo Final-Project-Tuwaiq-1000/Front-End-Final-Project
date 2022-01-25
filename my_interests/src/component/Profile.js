@@ -23,9 +23,7 @@ function Profile() {
     //   headers: { Authorization: `Bearer ${state.token}` },
     // };
     axios
-      .delete(
-        `https://final-project-tuwaiq.herokuapp.com/user/${state.userInfo.userLogged.id}`
-      )
+      .delete(`http://localhost:8080/user/${state.userInfo.userLogged.id}`)
       .then((response) => {
         dispatch(logOut());
       })
@@ -36,7 +34,7 @@ function Profile() {
 
   useEffect(() => {
     axios
-      .get(`https://final-project-tuwaiq.herokuapp.com/user/${user_id}`)
+      .get(`http://localhost:8080/user/${user_id}`)
       .then((response) => {
         setUserInfo(response.data);
       })

@@ -57,7 +57,7 @@ function Topic() {
                       onClick={() => {
                         axios
                           .get(
-                            `https://final-project-tuwaiq.herokuapp.com/category/${e.category.id}`
+                            `http://localhost:8080/category/${e.category.id}`
                           )
                           .then((response) => {
                             setPosts(response.data);

@@ -44,7 +44,7 @@ function CreatePost() {
           headers: { Authorization: `Bearer ${state.token}` },
         };
         axios
-          .post("https://final-project-tuwaiq.herokuapp.com/post", data, config)
+          .post("http://localhost:8080/post", data, config)
           .then((response) => {
             navigate("/");
           })
@@ -57,7 +57,7 @@ function CreatePost() {
 
   useEffect(() => {
     axios
-      .get(`https://final-project-tuwaiq.herokuapp.com/category`)
+      .get(`http://localhost:8080/category`)
       .then((response) => {
         setCategories(response.data);
       })

@@ -11,7 +11,7 @@ function Search() {
 
   useEffect(() => {
     axios
-      .get(`https://final-project-tuwaiq.herokuapp.com/category`)
+      .get(`http://localhost:8080/category`)
       .then((response) => {
         setCategories(response.data);
       })

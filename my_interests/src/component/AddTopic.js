@@ -24,7 +24,7 @@ function AddTopic() {
       headers: { Authorization: `Bearer ${state.token}` },
     };
     axios
-      .post("https://final-project-tuwaiq.herokuapp.com/category", data, config)
+      .post("http://localhost:8080/category", data, config)
       .then((response) => {
         navigate("/Admin");
       })

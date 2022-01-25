@@ -32,7 +32,7 @@ function UpdateUser() {
 
   useEffect(() => {
     axios
-      .get(`https://final-project-tuwaiq.herokuapp.com/user/${user_id}`)
+      .get(`http://localhost:8080/user/${user_id}`)
       .then((response) => {
         setUserName(`${response.data.userName}`);
         setEmail(`${response.data.email}`);
@@ -52,11 +52,7 @@ function UpdateUser() {
         headers: { Authorization: `Bearer ${state.token}` },
       };
       axios
-        .put(
-          `https://final-project-tuwaiq.herokuapp.com/user/${user_id}`,
-          data,
-          config
-        )
+        .put(`http://localhost:8080/user/${user_id}`, data, config)
         .then((response) => {
           navigate(`/${user_id}`);
         })
