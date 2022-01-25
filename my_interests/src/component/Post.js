@@ -20,7 +20,7 @@ function Post() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/post/${post_id}`)
+      .get(`https://final-project-tuwaiq.herokuapp.com/post/${post_id}`)
       .then((response) => {
         setPost(response.data);
       })
@@ -29,7 +29,9 @@ function Post() {
       });
 
     axios
-      .get(`http://localhost:8080/follow/${state.userInfo.userLogged.id}`)
+      .get(
+        `https://final-project-tuwaiq.herokuapp.com/follow/${state.userInfo.userLogged.id}`
+      )
       .then((response) => setPosts(response.data))
       .catch((error) => {
         console.log(error);
@@ -50,10 +52,14 @@ function Post() {
         headers: { Authorization: `Bearer ${state.token}` },
       };
       axios
-        .post(`http://localhost:8080/comment`, data, config)
+        .post(
+          `https://final-project-tuwaiq.herokuapp.com/comment`,
+          data,
+          config
+        )
         .then((response) => {
           axios
-            .get(`http://localhost:8080/post/${post_id}`)
+            .get(`https://final-project-tuwaiq.herokuapp.com/post/${post_id}`)
             .then((response) => {
               setPost(response.data);
             })
@@ -72,7 +78,10 @@ function Post() {
     };
 
     axios
-      .delete(`http://localhost:8080/post/${post_id}`, config)
+      .delete(
+        `https://final-project-tuwaiq.herokuapp.com/post/${post_id}`,
+        config
+      )
       .then((response) => {
         navigate(`/`);
       })
@@ -175,13 +184,13 @@ function Post() {
                                   };
                                   axios
                                     .delete(
-                                      `http://localhost:8080/comment/${e.id}`,
+                                      `https://final-project-tuwaiq.herokuapp.com/comment/${e.id}`,
                                       config
                                     )
                                     .then((response) => {
                                       axios
                                         .get(
-                                          `http://localhost:8080/post/${post_id}`
+                                          `https://final-project-tuwaiq.herokuapp.com/post/${post_id}`
                                         )
                                         .then((response) => {
                                           setPost(response.data);

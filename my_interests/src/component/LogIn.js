@@ -22,7 +22,7 @@ function LogIn() {
 
   const getInfo = () => {
     axios
-      .post("http://localhost:8080/login", data)
+      .post("https://final-project-tuwaiq.herokuapp.com/login", data)
       .then((response) => {
         const token = response.data.access_token;
         const decoded = jwt_decode(token);

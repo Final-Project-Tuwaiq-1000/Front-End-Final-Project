@@ -19,13 +19,15 @@ function Topic() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/follow/${state.userInfo.userLogged.id}`)
+      .get(
+        `https://final-project-tuwaiq.herokuapp.com/follow/${state.userInfo.userLogged.id}`
+      )
       .then((response) => setPostsFollow(response.data))
       .catch((error) => {
         console.log(error);
       });
     axios
-      .get(`http://localhost:8080/category/${topic_id}`)
+      .get(`https://final-project-tuwaiq.herokuapp.com/category/${topic_id}`)
       .then((response) => {
         setPosts(response.data);
       })
@@ -55,7 +57,7 @@ function Topic() {
                       onClick={() => {
                         axios
                           .get(
-                            `http://localhost:8080/category/${e.category.id}`
+                            `https://final-project-tuwaiq.herokuapp.com/category/${e.category.id}`
                           )
                           .then((response) => {
                             setPosts(response.data);

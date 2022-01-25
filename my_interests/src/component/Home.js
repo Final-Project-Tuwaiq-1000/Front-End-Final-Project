@@ -16,7 +16,9 @@ function Home() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/follow/${state.userInfo.userLogged.id}`)
+      .get(
+        `https://final-project-tuwaiq.herokuapp.com/follow/${state.userInfo.userLogged.id}`
+      )
       .then((response) => setPosts(response.data))
       .catch((error) => {
         console.log(error);

@@ -42,7 +42,7 @@ function SignUp() {
         setErrMsg("Password is NOT the Same");
       } else {
         axios
-          .post("http://localhost:8080/user", userInfo)
+          .post("https://final-project-tuwaiq.herokuapp.com/user", userInfo)
           .then((response) => {
             navigate("/LogIN");
           })

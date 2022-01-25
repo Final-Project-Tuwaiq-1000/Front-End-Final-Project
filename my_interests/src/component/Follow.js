@@ -22,7 +22,7 @@ function Follow() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/category`)
+      .get(`https://final-project-tuwaiq.herokuapp.com/category`)
       .then((response) => {
         setCategories(response.data);
       })
@@ -33,7 +33,9 @@ function Follow() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/follow/${state.userInfo.userLogged.id}`)
+      .get(
+        `https://final-project-tuwaiq.herokuapp.com/follow/${state.userInfo.userLogged.id}`
+      )
       .then((response) => {
         setMyCategory(response.data);
       })
@@ -53,7 +55,7 @@ function Follow() {
       headers: { Authorization: `Bearer ${state.token}` },
     };
     axios
-      .post(`http://localhost:8080/follow`, data, config)
+      .post(`https://final-project-tuwaiq.herokuapp.com/follow`, data, config)
       .then((response) => {
         navigate("/");
       })
@@ -69,7 +71,10 @@ function Follow() {
       headers: { Authorization: `Bearer ${state.token}` },
     };
     axios
-      .delete(`http://localhost:8080/follow/${UnFollow}`, config)
+      .delete(
+        `https://final-project-tuwaiq.herokuapp.com/follow/${UnFollow}`,
+        config
+      )
       .then((response) => {
         navigate("/");
       })
